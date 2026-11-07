@@ -32,6 +32,13 @@ jobs:
         env:
           YARN_ENABLE_IMMUTABLE_INSTALLS: "false"
 
+      # One-time lockfile capture; removed after the resolved lockfile is committed.
+      - name: Capture resolved lockfile
+        run: |
+          echo '### LOCKFILE BEGIN ###'
+          cat yarn.lock
+          echo '### LOCKFILE END ###'
+
       - name: ESLint
         run: yarn lint
 
