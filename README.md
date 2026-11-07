@@ -47,15 +47,15 @@ prettier.config.js
 
 ## Commands
 
-| Command | Description |
-| --- | --- |
-| `yarn dev` | Start Vite and Express simultaneously |
-| `yarn lint` | Run ESLint on client and server |
-| `yarn format` | Format with Prettier |
-| `yarn format:check` | Verify formatting |
-| `yarn test` | Run React and Express tests |
-| `yarn build` | Build frontend |
-| `yarn check` | Lint, format-check, test, and build |
+| Command             | Description                           |
+| ------------------- | ------------------------------------- |
+| `yarn dev`          | Start Vite and Express simultaneously |
+| `yarn lint`         | Run ESLint on client and server       |
+| `yarn format`       | Format with Prettier                  |
+| `yarn format:check` | Verify formatting                     |
+| `yarn test`         | Run React and Express tests           |
+| `yarn build`        | Build frontend                        |
+| `yarn check`        | Lint, format-check, test, and build   |
 
 ## Design system
 

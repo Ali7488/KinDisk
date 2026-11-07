@@ -16,10 +16,7 @@ export default defineConfig([
       sourceType: "module",
     },
     rules: {
-      "no-unused-vars": [
-        "error",
-        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
-      ],
+      "no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
     },
   },
 
@@ -33,12 +30,7 @@ export default defineConfig([
   },
 
   {
-    files: [
-      "server/**/*.js",
-      "client/vite.config.js",
-      "eslint.config.js",
-      "prettier.config.js",
-    ],
+    files: ["server/**/*.js", "client/vite.config.js", "eslint.config.js", "prettier.config.js"],
     languageOptions: { globals: globals.node },
   },
 

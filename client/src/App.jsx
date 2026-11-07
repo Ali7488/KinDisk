@@ -40,8 +40,8 @@ export default function App() {
         <p className="app__eyebrow">Full-stack starter</p>
         <h1>KinDisk</h1>
         <p className="app__lead">
-          A clean starting point with golden accents, responsive typography,
-          a shared design system, and a connected Express API.
+          A clean starting point with golden accents, responsive typography, a shared design system,
+          and a connected Express API.
         </p>
         <section className="app__panel" aria-labelledby="connection-title">
           <h2 id="connection-title">Connection status</h2>

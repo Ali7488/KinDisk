@@ -24,7 +24,12 @@ test("shows the Express health status when the API responds", async () => {
 });
 
 test("shows a useful message when the API fails", async () => {
-  vi.stubGlobal("fetch", vi.fn(async () => { throw new Error("Network offline"); }));
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(async () => {
+      throw new Error("Network offline");
+    }),
+  );
 
   render(<App />);
 
