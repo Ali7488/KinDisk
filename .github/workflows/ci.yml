@@ -25,19 +25,8 @@ jobs:
           npm install --global corepack
           corepack enable
 
-      # Temporary: prior commits added dependencies without updating yarn.lock.
-      # Regenerate and commit yarn.lock locally, then switch to yarn install --immutable.
       - name: Install workspace dependencies
-        run: yarn install
-        env:
-          YARN_ENABLE_IMMUTABLE_INSTALLS: "false"
-
-      # One-time lockfile capture; removed after the resolved lockfile is committed.
-      - name: Capture resolved lockfile
-        run: |
-          echo '### LOCKFILE BEGIN ###'
-          cat yarn.lock
-          echo '### LOCKFILE END ###'
+        run: yarn install --immutable
 
       - name: ESLint
         run: yarn lint

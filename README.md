@@ -71,7 +71,7 @@ When changing the server port, also change the client's `API_PROXY_TARGET`. The 
 
 ## CI
 
-GitHub Actions runs on every push (including feature branches) and every pull request. It installs Yarn workspaces and runs ESLint, Prettier checks, client/server tests, and the frontend build. The lockfile must be refreshed and committed after dependency changes. The initial workflow uses `yarn install` rather than immutable mode because the previous starter's lockfile needs regeneration.
+GitHub Actions runs on every push (including feature branches) and every pull request. It installs Yarn workspaces and runs ESLint, Prettier checks, client/server tests, and the frontend build. The committed `yarn.lock` pins dependencies. CI uses `yarn install --immutable` and rejects dependency changes that do not include the matching lockfile update.
 
 ## Project development
 
