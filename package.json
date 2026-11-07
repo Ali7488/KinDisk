@@ -1,0 +1,19 @@
+{
+  "name": "kindisk",
+  "private": true,
+  "packageManager": "yarn@4.18.0",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n CLIENT,SERVER \"yarn workspace client dev\" \"yarn workspace server dev\"",
+    "dev:client": "yarn workspace client dev",
+    "dev:server": "yarn workspace server dev",
+    "build": "yarn workspace client build",
+    "start": "yarn workspace server start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
