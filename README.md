@@ -1,13 +1,14 @@
-# React + Express Starter (JavaScript)
+# KinDisk
 
-Minimal reusable GitHub template with React 19, Vite 8, Express 5, and Yarn 4 workspaces. **JavaScript only**, no TypeScript, database, auth, or frontend routing preinstalled.
+KinDisk application scaffold.
 
 ## Requirements
 
 - Node.js 24 (see `.nvmrc`)
-- Corepack / Yarn 4.18.0 (`corepack enable` if necessary)
+- Corepack and Yarn 4
+- JavaScript, not TypeScript
 
-## First run
+## Start
 
 ```bash
 corepack enable
@@ -15,64 +16,64 @@ yarn install
 yarn dev
 ```
 
-Open http://localhost:5173. The React page should show **API connected**. The Express endpoint is http://localhost:8000/api/health.
+Open http://localhost:5173. The React page checks `/api/health` on the Express backend at http://localhost:8000.
 
-Local ports: 5173 (React/Vite), 8000 (Express).
-
-## Structure
+## Project layout
 
 ```text
-client/   React frontend; client/src/App.jsx
-server/   Express API; server/src/app.js and routes/
+client/
+  public/favicon.svg   Public favicon; replace for your app
+  src/assets/          Bundled/imported assets
+  src/App.jsx          React app and API connection check
+  src/App.css          Component-level starter styles
+  src/index.css        Global styles
+  index.html           HTML entry point and favicon link
+  vite.config.js       React plugin and /api proxy
+server/
+  src/app.js           Express middleware and API registration
+  src/index.js         Server start
+  src/routes/          Express API routes
+  src/controllers/     Route handlers
+  src/services/        Feature-dependent business logic
+  .env.example         Documented server configuration
+eslint.config.js       Client browser + server Node linting
+prettier.config.js     Shared formatting
+.editorconfig          Editor-neutral whitespace rules
 ```
 
-## Scripts
+## Commands
 
-| Command | Action |
-|---|---|
-| `yarn dev` | Run frontend + backend concurrently |
-| `yarn dev:client` | Run Vite |
-| `yarn dev:server` | Run Express with Node's watcher |
-| `yarn build` | Build the client |
-| `yarn start` | Start only Express |
+| Command | Purpose |
+| --- | --- |
+| `yarn dev` | Run frontend and backend |
+| `yarn dev:client` | Run Vite only |
+| `yarn dev:server` | Run Express only |
+| `yarn build` | Build frontend |
+| `yarn start` | Start Express only |
+| `yarn lint` | Check JavaScript and JSX |
+| `yarn lint:fix` | Apply safe ESLint fixes |
+| `yarn format` | Apply Prettier formatting |
+| `yarn format:check` | Check formatting |
+| `yarn check` | Lint, formatting check, and build |
 
-## Configuration and API flow
+Run `yarn format` after installing dependencies before the first `yarn format:check` if formatting differences exist.
 
-The Vite dev server proxies browser requests beginning with `/api` to Express at `http://localhost:8000`. The sample React component calls `/api/health` and displays a connection status. No CORS middleware is required for this development path. In production, use a reverse proxy or another intentional same-origin configuration, or configure CORS appropriately if deployed to different origins.
+## Assets and favicon
 
-The backend API is mounted at `/api` and returns JSON. Add domain routes to `server/src/routes`, request handlers to `controllers`, and business rules to `services` when needed. Avoid creating extra layers without a purpose.
+- Put files referenced by fixed URLs in `client/public/` (e.g. `/favicon.svg`).
+- Put imported images and other bundled assets in `client/src/assets/`.
+- Edit `client/index.html` to change the page title, icon, and metadata.
+- The supplied favicon is a neutral placeholder, not app branding.
 
-To set a custom server port, copy `server/.env.example` to `server/.env` and edit `PORT`. Also change the development proxy's port in `client/vite.config.js` if needed. Do not commit `.env`.
+## Configuration
 
-## Adding PostgreSQL / Prisma to a specific project
+Vite proxies `/api` to Express at `http://localhost:8000` during development. No CORS dependency is required for this local setup. For production, configure hosting and cross-origin behavior deliberately.
 
-The base template deliberately does **not** install a database ORM or ship database credentials. When you need PostgreSQL and Prisma, install and initialize those **inside `server/`**, add `.env.example` (e.g. `DATABASE_URL`), and keep the generated client, migrations, and schema server-side. Prisma's setup is version-sensitive: follow current official Prisma docs rather than assuming an old generator configuration is universal.
+Copy `server/.env.example` to `server/.env` for server-only settings. Files matching `.env*`, `*.local`, `.local/`, `.vscode/`, and `.zed/` are ignored where appropriate. Commit `.env.example`, never real secrets. Browser-exposed `VITE_*` values are public.
 
-## Turn this into a private GitHub template
+The starter intentionally does not include a database, authentication, React Router, or Tailwind. Add these per application needs. PostgreSQL and Prisma should remain server-side.
 
-From this directory, after installing and verifying locally:
+## Project-specific development
 
-```bash
-git init -b main
-git add .
-git commit -m "chore: create React Express starter"
-gh repo create Ali7488/react-express-template --private --source=. --remote=origin --push
-gh api -X PATCH repos/Ali7488/react-express-template -F is_template=true
-```
+Keep KinDisk-specific features in this repository. Updates to the reusable starter should be brought in selectively, not merged blindly.
 
-These require GitHub CLI (`gh`) authenticated to the account. If the repository already exists, use ordinary Git push instead of `gh repo create`.
-
-## Create a new app from template
-
-```bash
-gh repo create Ali7488/kindisk --private --template Ali7488/react-express-template --clone
-cd kindisk
-yarn install
-yarn dev
-```
-
-See the separate `mkfullstack.sh` function supplied with this starter for a reusable shell shortcut. The new repository has its own history and remote.
-
-## Before real deployment
-
-Add testing, input validation, production hosting configuration, security controls, database setup, and any required authentication **for your particular application**. The sample health endpoint is not a finished production API.

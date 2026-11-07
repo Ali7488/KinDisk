@@ -1,21 +1,27 @@
-# Dependencies and Yarn-generated state
+# Dependencies and package-manager state
 node_modules/
 .yarn/cache/
 .yarn/install-state.gz
 .pnp.*
 
-# Secrets
+# Environment variables and local overrides
 .env
 .env.*
 !.env.example
 !.env.*.example
+*.local
+.local/
 
-# Build artifacts
+# Compiled and generated files
 dist/
 coverage/
 
-# Logs and local tools
-*.log
-.DS_Store
-.idea/
+# Local editor settings
 .vscode/
+.zed/
+.idea/
+
+# Operating-system files and logs
+.DS_Store
+Thumbs.db
+*.log
