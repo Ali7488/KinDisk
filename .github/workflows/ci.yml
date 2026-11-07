@@ -35,6 +35,12 @@ jobs:
       - name: ESLint
         run: yarn lint
 
+      # Temporary formatting diagnosis. Removed after normalized files are committed.
+      - name: Preview formatting changes
+        run: |
+          yarn format
+          git diff -- client/src/App.jsx client/src/App.test.jsx eslint.config.js README.md
+
       - name: Prettier
         run: yarn format:check
 
