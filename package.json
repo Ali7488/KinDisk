@@ -17,7 +17,10 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
-    "check": "yarn lint && yarn format:check && yarn build"
+    "test:client": "yarn workspace client test:run",
+    "test:server": "yarn workspace server test",
+    "test": "yarn test:client && yarn test:server",
+    "check": "yarn lint && yarn format:check && yarn test && yarn build"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

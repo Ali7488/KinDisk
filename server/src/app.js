@@ -1,16 +1,14 @@
 import express from "express";
+import { requestLogger } from "./middleware/requestLogger.js";
+import { notFound } from "./middleware/notFound.js";
+import { errorHandler } from "./middleware/errorHandler.js";
 import { apiRouter } from "./routes/index.js";
 
 export const app = express();
 
+app.use(requestLogger);
 app.use(express.json());
 app.use("/api", apiRouter);
 
-app.use((_req, res) => {
-  res.status(404).json({ error: "Not found" });
-});
-
-app.use((error, _req, res, _next) => {
-  console.error(error);
-  res.status(500).json({ error: "Internal server error" });
-});
+app.use(notFound);
+app.use(errorHandler);

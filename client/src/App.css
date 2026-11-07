@@ -1,9 +1,75 @@
 .app {
-  max-width: 56rem;
-  margin: 0 auto;
-  padding: 3rem 1.5rem;
+  min-height: 100vh;
 }
 
-.app h1 {
-  margin-top: 0;
+.app__header {
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.app__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-block: var(--space-md);
+}
+
+.app__brand {
+  font-family: var(--font-family-serif);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+}
+
+.app__eyebrow {
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.app__main {
+  padding-block: var(--space-3xl);
+}
+
+.app__lead {
+  max-width: 60ch;
+  margin-bottom: var(--space-xl);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+}
+
+.app__panel {
+  max-width: 40rem;
+  padding: var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+}
+
+.app__panel h2 {
+  margin-bottom: var(--space-sm);
+}
+
+.app__status {
+  margin: 0;
+  color: var(--color-success);
+  font-weight: var(--font-weight-semibold);
+}
+
+.app__footer {
+  margin-top: var(--space-3xl);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.app__badge {
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
 }

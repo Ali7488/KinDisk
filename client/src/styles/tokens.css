@@ -1,0 +1,130 @@
+/* Design tokens: gold on charcoal (default dark), gold on white (light). */
+:root {
+  color-scheme: dark;
+
+  /* Semantic colors. Prefer these names over hardcoded values in components. */
+  --color-background: #10100f;
+  --color-surface: #1d1c18;
+  --color-surface-muted: #29261e;
+  --color-text: #f6f1e4;
+  --color-text-muted: #b5ad9b;
+  --color-text-inverse: #17120a;
+  --color-border: #423c30;
+  --color-border-strong: #64583f;
+  --color-primary: #dfb64f;
+  --color-primary-hover: #f0ca6d;
+  --color-primary-soft: #342b17;
+  --color-on-primary: #211806;
+  --color-link: #e6bd59;
+  --color-link-hover: #ffda86;
+  --color-success: #65d39b;
+  --color-warning: #f2c05b;
+  --color-danger: #fb8b86;
+
+  /* Fontsource variable fonts are bundled by Vite, not fetched at runtime. */
+  --font-family-sans: "Manrope Variable", system-ui, sans-serif;
+  --font-family-serif: "Fraunces Variable", Georgia, serif;
+  --font-family-mono: ui-monospace, "JetBrains Mono", monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: clamp(2rem, 4vw, 3rem);
+  --font-size-5xl: clamp(2.5rem, 6vw, 4rem);
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.15;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.8;
+
+  /* 4px-based spacing scale. */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.25rem;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 2px 5px rgb(0 0 0 / 0.16);
+  --shadow-md: 0 8px 20px rgb(0 0 0 / 0.22);
+  --shadow-lg: 0 20px 50px rgb(0 0 0 / 0.3);
+
+  --container-sm: 40rem;
+  --container-md: 48rem;
+  --container-lg: 64rem;
+  --container-xl: 75rem;
+  --container-2xl: 87.5rem;
+
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --ease-standard: ease;
+}
+
+/* Explicit user-selected light mode. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-background: #ffffff;
+  --color-surface: #faf9f5;
+  --color-surface-muted: #f1ecdf;
+  --color-text: #1b1a16;
+  --color-text-muted: #625b4e;
+  --color-text-inverse: #ffffff;
+  --color-border: #ded5c2;
+  --color-border-strong: #b9a98b;
+  --color-primary: #8c600c;
+  --color-primary-hover: #704907;
+  --color-primary-soft: #f8ecd0;
+  --color-on-primary: #ffffff;
+  --color-link: #82570a;
+  --color-link-hover: #624108;
+  --color-success: #167044;
+  --color-warning: #986000;
+  --color-danger: #b42e36;
+  --shadow-sm: 0 2px 5px rgb(24 20 12 / 0.06);
+  --shadow-md: 0 8px 20px rgb(24 20 12 / 0.1);
+  --shadow-lg: 0 20px 50px rgb(24 20 12 / 0.14);
+}
+
+/* Follow the OS when no explicit data-theme is set. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --color-background: #ffffff;
+    --color-surface: #faf9f5;
+    --color-surface-muted: #f1ecdf;
+    --color-text: #1b1a16;
+    --color-text-muted: #625b4e;
+    --color-text-inverse: #ffffff;
+    --color-border: #ded5c2;
+    --color-border-strong: #b9a98b;
+    --color-primary: #8c600c;
+    --color-primary-hover: #704907;
+    --color-primary-soft: #f8ecd0;
+    --color-on-primary: #ffffff;
+    --color-link: #82570a;
+    --color-link-hover: #624108;
+    --color-success: #167044;
+    --color-warning: #986000;
+    --color-danger: #b42e36;
+    --shadow-sm: 0 2px 5px rgb(24 20 12 / 0.06);
+    --shadow-md: 0 8px 20px rgb(24 20 12 / 0.1);
+    --shadow-lg: 0 20px 50px rgb(24 20 12 / 0.14);
+  }
+}

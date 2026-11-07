@@ -1,14 +1,10 @@
 # KinDisk
 
-KinDisk application scaffold.
+KinDisk scaffold using **React + Vite**, **Express 5**, **Yarn 4 workspaces**, and JavaScript. It intentionally omits authentication, a database, and routing libraries until each project's needs are known.
 
-## Requirements
+## Requirements and first run
 
-- Node.js 24 (see `.nvmrc`)
-- Corepack and Yarn 4
-- JavaScript, not TypeScript
-
-## Start
+Node 24 (see `.nvmrc`), Corepack, and Yarn 4:
 
 ```bash
 corepack enable
@@ -16,64 +12,71 @@ yarn install
 yarn dev
 ```
 
-Open http://localhost:5173. The React page checks `/api/health` on the Express backend at http://localhost:8000.
+Open **http://localhost:3000**. Express runs at **http://127.0.0.1:8000** with `GET /api/health`. Startup diagnostics and request logs appear in the backend terminal.
 
-## Project layout
+## Structure
 
 ```text
 client/
-  public/favicon.svg   Public favicon; replace for your app
-  src/assets/          Bundled/imported assets
-  src/App.jsx          React app and API connection check
-  src/App.css          Component-level starter styles
-  src/index.css        Global styles
-  index.html           HTML entry point and favicon link
-  vite.config.js       React plugin and /api proxy
+  public/favicon.svg
+  src/assets/
+  src/styles/tokens.css     Dark/light palettes and design tokens
+  src/styles/global.css     Reset and base element styling
+  src/App.css               Starter page-only styles
+  src/App.jsx               React app and API health check
+  src/App.test.jsx          React integration smoke tests
+  src/test/setup.js         Vitest matchers
+  .env.example              CLIENT_PORT and API_PROXY_TARGET
+  vite.config.js
 server/
-  src/app.js           Express middleware and API registration
-  src/index.js         Server start
-  src/routes/          Express API routes
-  src/controllers/     Route handlers
-  src/services/        Feature-dependent business logic
-  .env.example         Documented server configuration
-eslint.config.js       Client browser + server Node linting
-prettier.config.js     Shared formatting
-.editorconfig          Editor-neutral whitespace rules
+  src/app.js                Middleware and route assembly
+  src/cl-server.js          Server startup and diagnostics
+  src/config/env.js         Validate HOST, PORT, and LOG_LEVEL
+  src/routes/               API route definitions
+  src/controllers/          Request handlers
+  src/services/             Business logic when needed
+  src/repositories/         Data persistence modules when needed
+  src/middleware/           Request logging, 404, and error handling
+  src/utils/logger.js       Timestamped structured log output
+  src/test/                 Node built-in test runner
+  .env.example
+.github/workflows/ci.yml    Checks pushes to all branches and PRs
+eslint.config.js
+prettier.config.js
 ```
 
 ## Commands
 
-| Command | Purpose |
+| Command | Description |
 | --- | --- |
-| `yarn dev` | Run frontend and backend |
-| `yarn dev:client` | Run Vite only |
-| `yarn dev:server` | Run Express only |
+| `yarn dev` | Start Vite and Express simultaneously |
+| `yarn lint` | Run ESLint on client and server |
+| `yarn format` | Format with Prettier |
+| `yarn format:check` | Verify formatting |
+| `yarn test` | Run React and Express tests |
 | `yarn build` | Build frontend |
-| `yarn start` | Start Express only |
-| `yarn lint` | Check JavaScript and JSX |
-| `yarn lint:fix` | Apply safe ESLint fixes |
-| `yarn format` | Apply Prettier formatting |
-| `yarn format:check` | Check formatting |
-| `yarn check` | Lint, formatting check, and build |
+| `yarn check` | Lint, format-check, test, and build |
 
-Run `yarn format` after installing dependencies before the first `yarn format:check` if formatting differences exist.
+## Design system
 
-## Assets and favicon
+The default dark palette is charcoal and gold. If the OS prefers light mode, the application uses white and gold. All defaults are in `client/src/styles/tokens.css`, with semantic color variables, fonts, font-size scale, spacing, radii, shadows, container widths, and motion settings.
 
-- Put files referenced by fixed URLs in `client/public/` (e.g. `/favicon.svg`).
-- Put imported images and other bundled assets in `client/src/assets/`.
-- Edit `client/index.html` to change the page title, icon, and metadata.
-- The supplied favicon is a neutral placeholder, not app branding.
+The project bundles **Manrope Variable** (sans serif) and **Fraunces Variable** (serif) using Fontsource and Vite; no remote runtime font requests. For a manual theme override, set `document.documentElement.dataset.theme = "light"` or `"dark"`; delete that attribute to follow the OS again. The favicon under `client/public/` is a replaceable placeholder.
 
-## Configuration
+## Development environment
 
-Vite proxies `/api` to Express at `http://localhost:8000` during development. No CORS dependency is required for this local setup. For production, configure hosting and cross-origin behavior deliberately.
+Copy `client/.env.example` to `client/.env` to change `CLIENT_PORT` or `API_PROXY_TARGET`. Copy `server/.env.example` to `server/.env` to change `HOST`, `PORT`, or `LOG_LEVEL`.
 
-Copy `server/.env.example` to `server/.env` for server-only settings. Files matching `.env*`, `*.local`, `.local/`, `.vscode/`, and `.zed/` are ignored where appropriate. Commit `.env.example`, never real secrets. Browser-exposed `VITE_*` values are public.
+When changing the server port, also change the client's `API_PROXY_TARGET`. The Vite proxy avoids CORS configuration in local same-origin development. Do not put secrets into client-side `VITE_*` variables. Private `.env`, local settings, editor folders, dependency folders, and build output are Git-ignored.
 
-The starter intentionally does not include a database, authentication, React Router, or Tailwind. Add these per application needs. PostgreSQL and Prisma should remain server-side.
+## CI
 
-## Project-specific development
+GitHub Actions runs on every push (including feature branches) and every pull request. It installs Yarn workspaces and runs ESLint, Prettier checks, client/server tests, and the frontend build. The lockfile must be refreshed and committed after dependency changes. The initial workflow uses `yarn install` rather than immutable mode because the previous starter's lockfile needs regeneration.
 
-Keep KinDisk-specific features in this repository. Updates to the reusable starter should be brought in selectively, not merged blindly.
+## Project development
 
+KinDisk's feature implementation belongs here. Shared scaffold improvements can be cherry-picked from the reusable template, but future template changes will not automatically modify this repository.
+
+## Adding a database
+
+When required, add Prisma/PostgreSQL inside `server/`; do not connect React to PostgreSQL directly.
