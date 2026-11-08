@@ -21,7 +21,11 @@
     "test:server": "yarn workspace server test",
     "test": "yarn test:client && yarn test:server",
     "template:check": "node scripts/template-check.js",
-    "check": "yarn lint && yarn format:check && yarn test && yarn build"
+    "check": "yarn lint && yarn format:check && yarn test && yarn build",
+    "db:new": "yarn workspace server dbmate new",
+    "db:migrate": "yarn workspace server dbmate migrate",
+    "db:status": "yarn workspace server dbmate status",
+    "db:rollback": "yarn workspace server dbmate rollback"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
