@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:18
+    container_name: kindisk-db
+    environment:
+      POSTGRES_USER: ${KINDISK_USER}
+      POSTGRES_PASSWORD: ${KINDISK_PASSWORD}
+      POSTGRES_DB: ${KINDISK_DBNAME}
+    ports:
+      - 127.0.0.1:5435:5432
+    volumes:
+      - pgdata:/var/lib/postgresql
+    restart: unless-stopped
+
+volumes:
+  pgdata:
