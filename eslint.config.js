@@ -30,7 +30,13 @@ export default defineConfig([
   },
 
   {
-    files: ["server/**/*.js", "client/vite.config.js", "eslint.config.js", "prettier.config.js"],
+    files: [
+      "server/**/*.js",
+      "scripts/**/*.js",
+      "client/vite.config.js",
+      "eslint.config.js",
+      "prettier.config.js",
+    ],
     languageOptions: { globals: globals.node },
   },
 

@@ -1,8 +1,16 @@
+/* TEMPLATE: starter health-check screen; replace with the KinDisk file manager UI. */
 import { useEffect, useState } from "react";
 import "./App.css";
 
+const messages = {
+  checking: "Checking API...",
+  ok: "API connected",
+  unexpected: "Unexpected API response",
+  error: "API unavailable",
+};
+
 export default function App() {
-  const [status, setStatus] = useState("Checking API...");
+  const [apiState, setApiState] = useState("checking");
 
   useEffect(() => {
     const controller = new AbortController();
@@ -16,10 +24,10 @@ export default function App() {
           throw new Error(`API responded with ${response.status}`);
         }
         const data = await response.json();
-        setStatus(data.status === "ok" ? "API connected" : "Unexpected API response");
+        setApiState(data.status === "ok" ? "ok" : "unexpected");
       } catch (error) {
         if (error.name !== "AbortError") {
-          setStatus("API unavailable");
+          setApiState("error");
         }
       }
     }
@@ -45,8 +53,8 @@ export default function App() {
         </p>
         <section className="app__panel" aria-labelledby="connection-title">
           <h2 id="connection-title">Connection status</h2>
-          <p className="app__status" role="status">
-            Backend: {status}
+          <p className="app__status" role="status" data-state={apiState}>
+            Backend: {messages[apiState]}
           </p>
         </section>
         <p className="app__footer">Edit src/styles/tokens.css to customize the theme.</p>

@@ -1,3 +1,4 @@
+/* TEMPLATE: health-check smoke tests; replace with tests for real KinDisk interactions. */
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, expect, test, vi } from "vitest";
 import App from "./App.jsx";

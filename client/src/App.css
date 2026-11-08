@@ -1,3 +1,4 @@
+/* TEMPLATE: starter demo-page styles; replace when the file-manager UI is implemented. */
 .app {
   min-height: 100vh;
 }
@@ -56,8 +57,20 @@
 
 .app__status {
   margin: 0;
-  color: var(--color-success);
+  color: var(--color-text-muted);
   font-weight: var(--font-weight-semibold);
+}
+
+.app__status[data-state="ok"] {
+  color: var(--color-success);
+}
+
+.app__status[data-state="unexpected"] {
+  color: var(--color-warning);
+}
+
+.app__status[data-state="error"] {
+  color: var(--color-danger);
 }
 
 .app__footer {
