@@ -13,6 +13,7 @@
     "pg": "^8.23.1"
   },
   "devDependencies": {
-    "@types/pg": "^8.23.1"
+    "@types/pg": "^8.23.1",
+    "dbmate": "^2.37.0"
   }
 }
