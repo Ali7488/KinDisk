@@ -1,4 +1,4 @@
-/* TEMPLATE: starter health-check screen; replace with the KinDisk file manager UI. */
+/* TEMPLATE CHECKLIST: Replace the demo app, styles, tests, favicon, and starter palette. */
 import { useEffect, useState } from "react";
 import "./App.css";
 
