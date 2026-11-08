@@ -58,6 +58,6 @@ for (const hit of hits) {
   console.log(`  ${paint("cyan", `${hit.path}:${hit.line}`)}  ${paint("dim", hit.text)}`);
 }
 console.log(
-  paint("dim", "\nReview the flagged KinDisk starter files and replace the placeholders with project features."),
+  paint("dim", "\nReplace the flagged starter placeholders as you build KinDisk."),
 );
 process.exit(1);
