@@ -49,17 +49,16 @@ prettier.config.js
 
 ## Commands
 
-| Command             | Description                           |
-| ------------------- | ------------------------------------- |
-| `yarn dev`          | Start Vite and Express simultaneously |
-| `yarn lint`         | Run ESLint on client and server       |
-| `yarn format`       | Format with Prettier                  |
-| `yarn format:check` | Verify formatting                     |
-| `yarn test`         | Run React and Express tests           |
-| `yarn build`        | Build frontend                        |
+| Command               | Description                                                   |
+| --------------------- | ------------------------------------------------------------- |
+| `yarn dev`            | Start Vite and Express simultaneously                         |
+| `yarn lint`           | Run ESLint on client and server                               |
+| `yarn format`         | Format with Prettier                                          |
+| `yarn format:check`   | Verify formatting                                             |
+| `yarn test`           | Run React and Express tests                                   |
+| `yarn build`          | Build frontend                                                |
 | `yarn template:check` | Show unconverted starter placeholders (exits 1 until cleared) |
-| `yarn check`        | Lint, format-check, test, and build   |
-
+| `yarn check`          | Lint, format-check, test, and build                           |
 
 ## Errors and request logging
 
