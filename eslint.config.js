@@ -4,6 +4,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
+import { explicitJsExtensionRule } from "./scripts/eslint-rules/explicit-js-extension.js";
 
 export default defineConfig([
   globalIgnores(["**/dist/**", "**/coverage/**", "**/node_modules/**", ".yarn/**"]),
@@ -38,6 +39,16 @@ export default defineConfig([
       "prettier.config.js",
     ],
     languageOptions: { globals: globals.node },
+    plugins: {
+      "local-node-esm": {
+        rules: {
+          "explicit-js-extension": explicitJsExtensionRule,
+        },
+      },
+    },
+    rules: {
+      "local-node-esm/explicit-js-extension": "error",
+    },
   },
 
   prettier,
