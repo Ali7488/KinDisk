@@ -31,5 +31,5 @@ test("GET /api/health returns a successful JSON response", async () => {
 test("unknown API endpoints return JSON 404", async () => {
   const response = await fetch(`${baseUrl}/api/missing`);
   assert.equal(response.status, 404);
-  assert.equal((await response.json()).error, "Not found");
+  assert.equal((await response.json()).status, 404);
 });

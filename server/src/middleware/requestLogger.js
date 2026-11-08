@@ -6,10 +6,11 @@ export function requestLogger(req, res, next) {
 
   res.once("finish", () => {
     const durationMs = Number((performance.now() - started).toFixed(1));
-    logger.info("HTTP request", {
-      method: req.method,
-      path: req.originalUrl,
-      status: res.statusCode,
+    const status = res.statusCode;
+    const level = status >= 500 ? "error" : status >= 400 ? "warn" : "info";
+    const stream = level === "info" ? process.stdout : process.stderr;
+
+    logger[level](`${req.method} ${req.originalUrl} ${logger.status(status, stream)}`, {
       durationMs,
     });
   });

@@ -1,6 +1,5 @@
-export function notFound(req, res) {
-  res.status(404).json({
-    error: "Not found",
-    path: req.originalUrl,
-  });
+import { HttpError } from "../utils/httpError.js";
+
+export function notFound(req, _res, next) {
+  next(new HttpError(404, `Route not found: ${req.method} ${req.originalUrl}`));
 }
