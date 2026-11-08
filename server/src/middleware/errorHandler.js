@@ -32,7 +32,8 @@ export function errorHandler(error, req, res, _next) {
     logger.debug("Request rejected", context);
   }
 
-  if (res.headersSent) return;
+  // Once streaming has begun, Express's default handler must close the failed response.
+  if (res.headersSent) return _next(error);
 
   res.status(status).json({ status, error: message });
 }
