@@ -30,7 +30,7 @@ client/
   vite.config.js
 server/
   src/app.js                Middleware and route assembly
-  src/cl-server.js          Server startup and diagnostics
+  src/server.js          Server startup and diagnostics
   src/config/env.js         Validate HOST, PORT, and LOG_LEVEL
   src/routes/               API route definitions
   src/controllers/          Request handlers
