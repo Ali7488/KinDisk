@@ -2,10 +2,12 @@ services:
   db:
     image: postgres:18
     container_name: kindisk-db
+    # From root env file
     environment:
       POSTGRES_USER: ${KINDISK_USER}
       POSTGRES_PASSWORD: ${KINDISK_PASSWORD}
       POSTGRES_DB: ${KINDISK_DBNAME}
+    # Change these to whatever Address/Port works for you
     ports:
       - 127.0.0.1:5435:5432
     volumes:
