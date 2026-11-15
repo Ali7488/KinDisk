@@ -28,7 +28,7 @@
     "db:rollback": "yarn workspace server dbmate rollback",
     "db:seed:sql": "docker compose exec -T db sh -c 'psql -X -v ON_ERROR_STOP=1 -1 -U \"$POSTGRES_USER\" -d \"$POSTGRES_DB\" -f -' < server/sql/seeds/seed-dev.sql",
     "db:reset": "docker compose exec -T db sh -c 'psql -X -v ON_ERROR_STOP=1 -1 -U \"$POSTGRES_USER\" -d \"$POSTGRES_DB\" -f -' < server/sql/seeds/reset-dev.sql",
-    "db:seed": "db:reset && db:seed:sql"
+    "db:seed": "yarn db:reset && yarn db:seed:sql"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
