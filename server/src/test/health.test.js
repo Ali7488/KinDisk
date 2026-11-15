@@ -1,6 +1,16 @@
 import assert from "node:assert/strict";
 import { after, before, test } from "node:test";
-import { app } from "../app.js";
+// The app imports database-backed routes, which initialize pg configuration.
+// These routes are not exercised in this health test; no database is contacted.
+Object.assign(process.env, {
+  DB_PORT: "5435",
+  DB_NAME: "kindisk_test",
+  DB_USER: "test_user",
+  DB_PASSWORD: "test-only-placeholder",
+});
+
+// Dynamic import ensures test config exists before db.js calls readConfig().
+const { app } = await import("../app.js");
 
 let server;
 let baseUrl;
