@@ -6,6 +6,10 @@ const getUserId = async () => {
   const sql = `SELECT user_id FROM public.users WHERE username = 'Mohannad'`;
   const result = await pool.query(sql);
   const userId = result.rows[0]?.user_id;
+
+  if (!userId) {
+    throw new Error("Development User Missing");
+  }
   logger.info(userId);
   return userId;
 };
@@ -22,7 +26,7 @@ export const getUserFolders = async (id) => {
 };
 
 export const getUserFiles = async (id) => {
-  const userId = id !== null ? id : await getUserId();
+  const userId = id ?? (await getUserId());
 
   const sql = `SELECT files.file_id, files.original_name AS file_name,
                files.folder_id  AS files_parent,
