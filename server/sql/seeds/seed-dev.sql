@@ -1,5 +1,5 @@
 -- ============================================================
--- KINDSK DEVELOPMENT SEED
+-- KINDISK DEVELOPMENT SEED
 -- 3 users, 1 settings row, 51 folders, 22 file records
 --
 -- Run after resetting the development database.
@@ -11,15 +11,18 @@
 -- 1. USERS
 -- ============================================================
 
+-- Fixed UUID for the development user, so Postman tests survive database reseeds.
+-- This is a local test identity, NOT a valid authenticated session.
 INSERT INTO public.users (
+    user_id,
     username,
     password_hash,
     quota_override_bytes
 )
 VALUES
-    ('Mohannad', '!LOCAL_DEV_LOGIN_DISABLED!', NULL),
-    ('Marah',    '!LOCAL_DEV_LOGIN_DISABLED!', 110000000000),
-    ('Ammar',    '!LOCAL_DEV_LOGIN_DISABLED!', NULL);
+    ('11111111-1111-4111-8111-111111111111', 'Mohannad', '!LOCAL_DEV_LOGIN_DISABLED!', NULL),
+    (DEFAULT, 'Marah',  '!LOCAL_DEV_LOGIN_DISABLED!', 110000000000),
+    (DEFAULT, 'Ammar',  '!LOCAL_DEV_LOGIN_DISABLED!', NULL);
 
 
 -- ============================================================
