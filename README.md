@@ -22,7 +22,7 @@ Other implemented foundations:
 
 - **Relational schema:** users, folders, files, folder-access permissions, and instance settings, with UUID keys, references, validation constraints, and a permission enum.
 - **Versioned SQL migrations:** handwritten PostgreSQL migrations managed through dbmate.
-- **Reproducible local database:** PostgreSQL 18 via Docker Compose, development seeds, and reset scripts.
+- **Dockerized PostgreSQL setup:** Configured PostgreSQL 18 with Docker Compose, a persistent named volume, localhost-only port binding, and environment-based credentials; added development seed and reset commands.
 - **Basic API health check:** `GET /api/health`.
 
 ### API example
