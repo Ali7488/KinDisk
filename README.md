@@ -24,7 +24,6 @@ Other implemented foundations:
 - **Versioned SQL migrations:** handwritten PostgreSQL migrations managed through dbmate.
 - **Reproducible local database:** PostgreSQL 18 via Docker Compose, development seeds, and reset scripts.
 - **Basic API health check:** `GET /api/health`.
-- **Automated tests:** React Testing Library/Vitest coverage for the content view and error/retry states, plus Node tests for backend configuration and health routes.
 
 ### API example
 
@@ -63,7 +62,6 @@ The API currently uses a **hard-coded seeded development user**. It does **not**
 | API | Node.js, Express |
 | Data | PostgreSQL, handwritten SQL, `pg`, dbmate |
 | Local infrastructure | Docker Compose |
-| Tests | Vitest, React Testing Library, Node test runner |
 | Workspace | Yarn 4 workspaces |
 
 ## Run locally
@@ -99,14 +97,6 @@ You need **Node.js 24+**, **Yarn 4**, and **Docker with Compose**.
 
 Open **http://localhost:3000** for the React client. The API defaults to **http://127.0.0.1:8000**. Vite proxies `/api` requests to the backend during development.
 
-### Tests and code checks
-
-```bash
-yarn test            # client and server tests
-yarn lint            # ESLint
-yarn build           # frontend production build
-yarn check           # lint, formatting, tests, and build
-```
 
 ## Roadmap
 
